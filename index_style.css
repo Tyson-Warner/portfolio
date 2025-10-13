@@ -1,0 +1,35 @@
+:root {--margin-vh: 4vh;}
+:root {--main-color: rgb(185, 185, 185);}
+
+@font-face{
+    src: url(src/fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf);
+    font-family: roboto;
+}
+
+body {
+    background: #161617;
+    color: white;
+    overflow: hidden;
+}
+
+.mainPageOutline {
+    position: fixed;
+    top: var(--margin-vh);
+    left: var(--margin-vh);
+    width: calc(100vw - (2 * var(--margin-vh)));
+    height: calc(100vh - (2 * var(--margin-vh)));
+    border: 1px solid var(--main-color);
+    box-sizing: border-box;
+}
+
+h1 {
+    position: fixed;
+    top: calc(var(--margin-vh));
+    left: calc(var(--margin-vh) + 10px);
+    margin: 0;
+
+    font-family: roboto, arial;
+    font-weight: 200;
+    font-size: 48px;
+
+}
