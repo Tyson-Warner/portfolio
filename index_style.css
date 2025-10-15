@@ -1,5 +1,24 @@
-:root {--margin-vh: 4vh;}
-:root {--main-color: rgb(185, 185, 185);}
+:root {--margin-vh: 4vh;} /* border spacing */
+
+Color Schemes
+:root {
+  --color-main1: #000; /* fallback */
+  --color-main2: #fff;
+  --color-accent1: #aaa;
+  --color-accent2: #aaa;
+}
+html.industrial {/* Industrial Minimalism Theme */
+  --color-main1: #1B1B1B;
+  --color-main2: #F2F2F2;
+  --color-accent1: #D4AF37;
+  --color-accent2: #007ACC;
+}
+html.deepspace {/* Deep Space Theme */
+  --color-main1: #0D1117;
+  --color-main2: #C9D1D9;
+  --color-accent1: #58A6FF;
+  --color-accent2: #FF6E6E;
+}
 
 @font-face{
     src: url(src/fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf);
@@ -7,10 +26,46 @@
 }
 
 body {
-    background: #161617;
-    color: white;
+    background: var(--color-main1);
+    color: var(--color-main2);
     overflow: hidden;
 }
+
+/*
+Creating a banner at the top of page
+*/
+:root{
+  --banner-h: 64px;
+}
+body { margin: 0; background: var(--color-main1); color: var(--color-main2); }
+.banner{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: var(--banner-h);
+  backdrop-filter: saturate(150%) blur(6px);
+  background: var(--main-color); /* translucent over content */
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.banner__inner{
+  max-width: 1100px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 24px;
+}
+.brand{ font-weight: 300; letter-spacing: 0.5px; font-family: "roboto", arial; }
+.nav a{
+  color: var(--co);
+  text-decoration: none;
+  margin-right: 16px;
+  font-family: "roboto", arial;
+  font-weight: 300;
+}
+.nav a:hover{ color: var(--color-accent1); }
+
 
 .mainPageOutline {
     position: fixed;
@@ -31,5 +86,4 @@ h1 {
     font-family: roboto, arial;
     font-weight: 200;
     font-size: 48px;
-
 }
