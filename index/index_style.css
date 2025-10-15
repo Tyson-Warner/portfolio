@@ -31,12 +31,8 @@ body {
     overflow: hidden;
 }
 
-/*
-Creating a banner at the top of page
-*/
-:root{
-  --banner-h: 64px;
-}
+/* Creating a banner at the top of page */
+:root{--banner-h: 6vh;}
 body { margin: 0; background: var(--color-main1); color: var(--color-main2); }
 .banner{
   position: sticky;
@@ -48,34 +44,43 @@ body { margin: 0; background: var(--color-main1); color: var(--color-main2); }
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 .banner__inner{
-  max-width: 1100px;
+  width: 90vw;
+  max-width: none;
   margin: 0 auto;
   height: 100%;
   display: flex;
   align-items: center;
-  padding: 0 16px;
-  gap: 24px;
+  justify-content: space-between;
 }
-.brand{ font-weight: 300; letter-spacing: 0.5px; font-family: "roboto", arial; }
+.brand{ font-weight: 300; letter-spacing: 0.5px; font-family: "roboto", arial; font-size: 2.5vh;}
 .nav a{
-  color: var(--co);
+  color: var(--color-main2);
   text-decoration: none;
   margin-right: 16px;
   font-family: "roboto", arial;
   font-weight: 300;
+  font-size: 2.5vh;
+  letter-spacing: 0.5px;
 }
 .nav a:hover{ color: var(--color-accent1); }
-
-
-.mainPageOutline {
-    position: fixed;
-    top: var(--margin-vh);
-    left: var(--margin-vh);
-    width: calc(100vw - (2 * var(--margin-vh)));
-    height: calc(100vh - (2 * var(--margin-vh)));
-    border: 1px solid var(--main-color);
-    box-sizing: border-box;
+.toggle{
+  margin-left: 12px;
+  font: inherit;
+  line-height: 1;
+  padding: 6px 10px;
+  border: 1px solid var(--color-accent1);
+  background: transparent;
+  color: var(--color-main2);
+  border-radius: 6px;
+  cursor: pointer;
 }
+.toggle:hover{
+  color: var(--color-accent1);
+  border-color: var(--color-accent1);
+}
+
+
+
 
 h1 {
     position: fixed;
