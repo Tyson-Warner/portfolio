@@ -1,23 +1,25 @@
-// index_script.js
+const toggle = document.getElementById("darkmode-toggle");
+const root = document.documentElement;
 
-(function(){
-  const root = document.documentElement;
-  const btn = document.getElementById('themeToggle');
+toggle.addEventListener("change", () => {
+  const styles = getComputedStyle(root);
+  const c1 = styles.getPropertyValue("--color-main1").trim();
+  const c2 = styles.getPropertyValue("--color-main2").trim();
 
-  function swapMainColors(){
-    const styles = getComputedStyle(root);
-    const c1 = styles.getPropertyValue('--color-main1').trim();
-    const c2 = styles.getPropertyValue('--color-main2').trim();
-    root.style.setProperty('--color-main1', c2);
-    root.style.setProperty('--color-main2', c1);
-  }
+  // swap them
+  root.style.setProperty("--color-main1", c2);
+  root.style.setProperty("--color-main2", c1);
 
-  const pref = localStorage.getItem('lightModeSwap') === '1';
-  if (pref) swapMainColors();
+  // optional: save the user preference
+  localStorage.setItem("darkModeChecked", toggle.checked ? "1" : "0");
+});
 
-  btn.addEventListener('click', () => {
-    swapMainColors();
-    const toggled = localStorage.getItem('lightModeSwap') === '1';
-    localStorage.setItem('lightModeSwap', toggled ? '0' : '1');
-  });
-})();
+// restore saved preference
+if (localStorage.getItem("darkModeChecked") === "1") {
+  toggle.checked = true;
+  const styles = getComputedStyle(root);
+  const c1 = styles.getPropertyValue("--color-main1").trim();
+  const c2 = styles.getPropertyValue("--color-main2").trim();
+  root.style.setProperty("--color-main1", c2);
+  root.style.setProperty("--color-main2", c1);
+}
