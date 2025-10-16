@@ -1,6 +1,6 @@
 :root {--margin-vh: 4vh;} /* border spacing */
 
-Color Schemes
+/* Color Schemes */
 :root {
   --color-main1: #000; /* fallback */
   --color-main2: #fff;
@@ -32,9 +32,14 @@ body {
 }
 
 /* Creating a banner at the top of page */
-:root{--banner-h: 6vh;}
-body { margin: 0; background: var(--color-main1); color: var(--color-main2); }
-.banner{
+:root{--banner-h: min(6svh, 100px);}
+:root{--banner-fontsize: clamp(0.5rem, calc(1.5vw + 0.5rem), 5rem);}
+body {
+  background: var(--color-main1);
+  color: var(--color-main2);
+  overflow: auto;
+}
+.header{
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -45,22 +50,24 @@ body { margin: 0; background: var(--color-main1); color: var(--color-main2); }
 }
 .banner__inner{
   width: 90vw;
-  max-width: none;
   margin: 0 auto;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.brand{ font-weight: 300; letter-spacing: 0.5px; font-family: "roboto", arial; font-size: 2.5vh;}
+.brand{
+  font-weight: 300;
+  font-family: "roboto", arial;
+  font-size: var(--banner-fontsize);
+}
 .nav a{
   color: var(--color-main2);
   text-decoration: none;
   margin-right: 16px;
   font-family: "roboto", arial;
   font-weight: 300;
-  font-size: 2.5vh;
-  letter-spacing: 0.5px;
+  font-size: var(--banner-fontsize);
 }
 .nav a:hover{ color: var(--color-accent1); }
 .toggle{
@@ -120,18 +127,14 @@ input:checked + label:after {
   background: linear-gradient(180deg, #777,#3a3a3a);
 }
 label:active:after {
-  width: 3vh;
+  width: 3.5vh;
 }
 
 
 
-h1 {
-    position: fixed;
-    top: calc(var(--margin-vh));
-    left: calc(var(--margin-vh) + 10px);
-    margin: 0;
-
-    font-family: roboto, arial;
-    font-weight: 200;
-    font-size: 48px;
+main {
+  padding-top: calc(var(--banner-h) + 2vh);
+  padding-inline: clamp(16px, 4vw, 48px);
+  max-width: 1100px;   /* or 90ch, etc. */
+  margin-inline: auto;
 }
