@@ -25,10 +25,30 @@ html.deepspace{
   padding: 0;
   font-family: var(--font);
   box-sizing: border-box;
+  cursor: none;
 }
 body{
   background: var(--color-main1);
   color: var(--color-main2);
+}
+.cursor-center {
+  width: 9px;
+  height: 9px;
+  background-color: var(--color-main2);
+}
+.cursor-outline {
+  width: 50px;
+  height: 50px;
+  border: 2px solid rgb(from var(--color-accent2) r g b / 0.4);
+}
+.cursor-center,
+.cursor-outline {
+  position: fixed;
+  top: 0; left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 1001;
+  pointer-events: none;
 }
 
 
@@ -78,6 +98,7 @@ header { background-color: transparent; }  /* optional */
   top: 20svh;
   left: min(5vw);
   font-family: var(--font);
+  z-index: 1000;
 }
 h1 {
   font-size: 50px;
@@ -94,27 +115,6 @@ h2 {
   color: var(--color-main2);
 }
 
-/* Cursor-following blur */
-.cursor-blur {
-  position: fixed;
-  top: 0; left: 0;
-  width: 220px; height: 220px;
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  background: rgba(88,166,255,0.8); /* strong solid color for debugging */
-  outline: 2px solid #58a6ff;       /* so you can see the edges */
-  z-index: 999999;                   /* higher, just in case */
-}
 
-
-
-/* Show by default */
-.cursor-blur { display: block; }
-
-/* Hide only on pure touch (phones/tablets), not on hybrids */
-@media (hover: none) and (pointer: coarse) and (not (any-hover: hover)) {
-  .cursor-blur { display: none; }
-}
 
 
