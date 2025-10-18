@@ -32,37 +32,89 @@ body{
 }
 
 
+/* Header layout */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* left logo, right nav */
+  padding: 12px 20px;
+  background: var(--color-main1); /* or keep your red if you want */
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
+/* Logo/name */
 .logo {
-    text-decoration: none;
-    color: var(--color-main2);
-    font: var(--font);
-    font-weight: bold;
-    font-size: 2rem;
-    position: fixed;
-    top: 2vh;
-    left: 2vw;
+  text-decoration: none;
+  color: var(--color-main2);
+  font-family: var(--font);       /* fix: was 'font:' before */
+  font-weight: 300;
+  font-size: 1.5rem;
 }
-.logo:hover {
-  color: var(--color-accent1)
-}
+.logo:hover { color: var(--color-accent1); }
 
-
-
+/* Nav */
 .topnav {
-  overflow: hidden;
-  float: right;
+  display: flex;                  /* replace floats with flex */
+  gap: 18px;                      /* space between links */
 }
 .topnav a {
-  float: right;
   color: var(--color-main2);
-  text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 1.1rem;
   font-family: var(--font);
-  font-weight: bold;
+  font-weight: 300;
+  padding: 6px 0;                 /* vertical rhythm, no big blocks */
 }
-.topnav a:hover{
-  color: var(--color-accent1)
+.topnav a:hover { color: var(--color-accent1); }
+
+/* Remove old float-based styles if present */
+header { background-color: transparent; }  /* optional */
+
+.hero {
+  position: absolute;
+  top: 20svh;
+  left: min(5vw);
+  font-family: var(--font);
 }
+h1 {
+  font-size: 50px;
+  font-weight: 300;
+  margin: 0; /* remove default spacing */
+}
+h2 {
+  position: relative;
+  top: 0;       /* now relative to h1 naturally */
+  left: 0;
+  margin-top: 20px; /* space between h1 and h2 */
+  font-size: 20px;
+  font-weight: 200;
+  color: var(--color-main2);
+}
+
+/* Cursor-following blur */
+.cursor-blur {
+  position: fixed;
+  top: 0; left: 0;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  background: rgba(88,166,255,0.8); /* strong solid color for debugging */
+  outline: 2px solid #58a6ff;       /* so you can see the edges */
+  z-index: 999999;                   /* higher, just in case */
+}
+
+
+
+/* Show by default */
+.cursor-blur { display: block; }
+
+/* Hide only on pure touch (phones/tablets), not on hybrids */
+@media (hover: none) and (pointer: coarse) and (not (any-hover: hover)) {
+  .cursor-blur { display: none; }
+}
+
+
